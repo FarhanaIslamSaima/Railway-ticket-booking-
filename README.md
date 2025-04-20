@@ -125,5 +125,5 @@ This is a standalone web application. It does not depend on any existing softwar
   - PostgreSQL  
   - Tailwind CSS  
   - JWT for auth
-- **E. [🗓️ Project Sprint Plan](#-project-sprint-plan)** – Timeline and breakdown into Agile sprints
+- **E. [🗓️ Project Sprint Plan](./sprint-pland.md)** – Timeline and breakdown into Agile sprints
    
