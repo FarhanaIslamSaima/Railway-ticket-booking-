@@ -5,8 +5,8 @@
 ## ✅ Sprint 1: Project Setup & Authentication
 
 ### To Do
-- [ ] Initialize Django backend with DRF
-- [ ] Setup PostgreSQL DB
+
+
 - [ ] Design user model with roles (Admin, Passenger)
 - [ ] JWT-based authentication (login/register APIs)
 - [ ] React auth pages: Login, Register
@@ -17,6 +17,8 @@
 ### Done
 - [X] Setup basic UI with Tailwind CSS
 - [X] Initialize React frontend with Vite/CRA
+- [X] Initialize Django backend with DRF
+- [X] Setup PostgreSQL DB
 
 
 ---

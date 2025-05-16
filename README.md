@@ -1,22 +1,23 @@
 # 📘 Software Requirements Specification (SRS)
 
-## 🚆 Railway Booking Web Application
+## 🎟️ Event Booking Web Application
 
 ---
 
 ## 1. Introduction
 
 ### 1.1 Purpose
-The purpose of this document is to outline the software requirements for a web-based Railway Booking Application. The system will allow users to search trains, book tickets, and manage their bookings. Admins will be able to manage trains, routes, and booking records.
+The purpose of this document is to outline the software requirements for a web-based Event Booking Application. The system allows users to explore events and book tickets, while organizers can post and manage their events. Admins oversee the platform’s operations.
 
 ### 1.2 Scope
 The application will support:
 - User registration and login
-- Train search and filtering
-- Real-time seat availability
+- Event discovery and filtering
+- Real-time ticket availability
 - Booking and cancellation
 - Payment gateway integration
-- Admin panel for train and booking management
+- Organizer dashboard for managing events
+- Admin panel for platform moderation
 
 ### 1.3 Definitions, Acronyms, and Abbreviations
 - **Django** – Python-based web framework (backend)
@@ -26,13 +27,13 @@ The application will support:
 - **CRUD** – Create, Read, Update, Delete
 
 ### 1.4 References
-- Django Documentation  
-- React Documentation  
-- REST API Guidelines  
-- Bootstrap/Tailwind CSS (for UI)
+- Django Documentation
+- React Documentation
+- REST API Guidelines
+- Tailwind CSS Docs
 
 ### 1.5 Overview
-This document outlines the functional and non-functional requirements, system features, user roles, and constraints of the railway booking app.
+This document outlines the functional and non-functional requirements, system features, user roles, and constraints of the Event Booking App.
 
 ---
 
@@ -42,33 +43,36 @@ This document outlines the functional and non-functional requirements, system fe
 This is a standalone web application. It does not depend on any existing software.
 
 ### 2.2 Product Functions
-- Search trains by date, location
-- Display available classes and seats
-- Ticket booking with confirmation
-- Secure login and role-based access
-- Admin management dashboard
+- Search and filter public events
+- Display event details and ticket availability
+- Ticket booking and cancellation
+- Role-based access (User, Organizer, Admin)
+- Organizer dashboard
+- Admin dashboard for platform oversight
 
 ### 2.3 User Classes and Characteristics
-- **Passenger/User** – Can search, book, view or cancel bookings  
-- **Admin** – Can manage train schedules, bookings, and user data
+- **User/Attendee** – Can search events, book tickets, cancel and manage bookings
+- **Organizer** – Can create and manage events, view ticket sales
+- **Admin** – Manages all users, events, and bookings; enforces platform rules
 
 ### 2.4 Operating Environment
-- Backend: Django (Python 3.x)  
-- Frontend: React.js  
-- Database: PostgreSQL  
-- OS: Cross-platform  
+- Backend: Django (Python 3.x)
+- Frontend: React.js
+- Database: PostgreSQL
+- OS: Cross-platform
 - Browser: Chrome, Firefox, Edge, Safari
 
 ### 2.5 Constraints
-- Must follow RESTful architecture  
-- Responsive UI for mobile and desktop  
-- Secure password storage and communication  
-- Payment gateway support (SSLCommerz, Stripe, etc.)
+- Must follow RESTful architecture
+- Responsive UI for mobile and desktop
+- Secure user authentication and data handling
+- Integration with at least one payment gateway (Stripe, SSLCommerz)
 
 ### 2.6 Assumptions and Dependencies
-- Internet access is required  
-- Users will use valid payment methods  
-- Admin will maintain and update train information regularly
+- Users and organizers have internet access
+- Payment methods used are valid
+- Organizers actively maintain event details
+- SMS/email services are operational for notifications
 
 ---
 
@@ -76,22 +80,23 @@ This is a standalone web application. It does not depend on any existing softwar
 
 ### 3.1 Functional Requirements
 
-| ID | Description |
-|----|-------------|
-| FR1 | Users can register and log in |
-| FR2 | Users can search trains by date and location |
-| FR3 | The system displays available trains and seat availability |
-| FR4 | Users can select seat(s) and proceed to booking |
-| FR5 | Payment is processed securely |
-| FR6 | Ticket confirmation is sent via email |
-| FR7 | Users can cancel bookings and request refunds |
-| FR8 | Admin can add, update, or delete trains and schedules |
-| FR9 | Admin can view all bookings |
+| ID   | Description |
+|------|-------------|
+| FR1  | Users can register and log in |
+| FR2  | Users can search and filter events |
+| FR3  | Users can view event details and ticket availability |
+| FR4  | Users can book tickets for events |
+| FR5  | Payment is processed securely |
+| FR6  | Booking confirmation is sent via email |
+| FR7  | Users can cancel bookings and request refunds |
+| FR8  | Organizers can create, update, or delete events |
+| FR9  | Organizers can view bookings for their events |
+| FR10 | Admin can manage all events, users, and bookings |
 
 ### 3.2 Non-Functional Requirements
 
-| ID | Description |
-|----|-------------|
+| ID   | Description |
+|------|-------------|
 | NFR1 | The system should respond to any booking action in under 2 seconds |
 | NFR2 | The UI should be mobile-friendly |
 | NFR3 | Passwords must be encrypted and stored securely |
@@ -99,31 +104,32 @@ This is a standalone web application. It does not depend on any existing softwar
 | NFR5 | All sensitive actions require authentication |
 
 ### 3.3 External Interface Requirements
-- **Frontend**: Built with React.js  
-- **Backend API**: Django REST Framework (DRF)  
-- **Database**: PostgreSQL  
-- **Payment API**: SSLCommerz or Stripe  
-- **Email/SMS**: SendGrid or Twilio (for notifications)
+- **Frontend**: React.js
+- **Backend API**: Django REST Framework (DRF)
+- **Database**: PostgreSQL
+- **Payment API**: Stripe / SSLCommerz
+- **Email/SMS**: SendGrid / Twilio
 
 ---
 
 ## 4. Appendices
 
-- **A. Use Case Diagram**  
-  (Passenger: Search → View → Book → Pay → Receive Ticket)  
-  (Admin: Add/Edit/Delete Train → View All Bookings)
+- **A. Use Case Diagram**
+  (User: Search → View → Book → Pay → Receive Ticket)
+  (Organizer: Add/Edit/Delete Event → View Bookings)
+  (Admin: Moderate Content → Manage Users & Events)
 
-- **B. Entity-Relationship Diagram (ERD)**  
-  - Tables: User, Train, Booking, Payment, Seat, Route
+- **B. Entity-Relationship Diagram (ERD)**
+  - Tables: User, Event, Booking, Payment, Ticket, Category
 
-- **C. Sample UI Mockups**  
-  (Landing page, search result page, booking form, admin dashboard)
+- **C. Sample UI Mockups**
+  (Landing page, event list, booking form, organizer dashboard, admin panel)
 
-- **D. Technologies**  
-  - React + Vite  
-  - Django + DRF  
-  - PostgreSQL  
-  - Tailwind CSS  
-  - JWT for auth
-- **E. [🗓️ Project Sprint Plan](./sprint-pland.md)** – Timeline and breakdown into Agile sprints
-   
+- **D. Technologies**
+  - React + Vite
+  - Django + DRF
+  - PostgreSQL
+  - Tailwind CSS
+  - JWT for authentication
+
+- **E. [🗓️ Project Sprint Plan](./sprint-plan.md)** – Timeline and Agile sprint breakdown
